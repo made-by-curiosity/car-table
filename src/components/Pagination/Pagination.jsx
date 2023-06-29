@@ -1,3 +1,5 @@
+import { PaginationBtn, PaginationContainer } from './Pagination.styled';
+
 export const Pagination = ({
   showPrevPage,
   showNextPage,
@@ -5,19 +7,23 @@ export const Pagination = ({
   perPage,
   totalCars,
 }) => {
+  const totalPages = Math.ceil(totalCars / perPage);
+
   return (
-    <div>
-      <button type="button" onClick={showPrevPage} disabled={page === 1}>
-        Prev page
-      </button>
-      <span>Page: {page}</span>
-      <button
+    <PaginationContainer>
+      <PaginationBtn type="button" onClick={showPrevPage} disabled={page === 1}>
+        Previous
+      </PaginationBtn>
+      <span>
+        Page {page} of {totalPages}
+      </span>
+      <PaginationBtn
         type="button"
         onClick={showNextPage}
         disabled={page * perPage >= totalCars}
       >
-        Next page
-      </button>
-    </div>
+        Next
+      </PaginationBtn>
+    </PaginationContainer>
   );
 };

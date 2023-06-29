@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Table = styled.table`
+  margin-bottom: 10px;
+
   width: 100%;
 
   border-collapse: collapse;

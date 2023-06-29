@@ -93,6 +93,13 @@ export const App = () => {
             />
           </FilterWrapper>
           <CarsTable cars={currentCarsToShow} />
+          <Pagination
+            showNextPage={showNextPage}
+            showPrevPage={showPrevPage}
+            page={page}
+            perPage={PER_PAGE}
+            totalCars={totalCarsToShow.length}
+          />
         </Container>
       </Section>
     </div>
