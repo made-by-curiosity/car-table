@@ -2,11 +2,17 @@ import { useEffect, useMemo, useState } from 'react';
 import { Container } from './Container/Container';
 import { CarsTable } from './CarsTable/CarsTable';
 import { Section } from './Section/Section';
+import { Filter } from './Filter/Filter';
 
 import { getCars } from 'services/carsApi';
+import localStorage from '../services/localStorageApi';
+
+const CARS_STORAGE_KEY = 'all-cars';
 
 export const App = () => {
-  const [allCars, setAllCars] = useState([]);
+  const [allCars, setAllCars] = useState(
+    localStorage.load(CARS_STORAGE_KEY) ?? []
+  );
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -17,34 +23,45 @@ export const App = () => {
     (async () => {
       try {
         const initialCars = await getCars();
-        console.log(initialCars);
 
         setAllCars(initialCars.data.cars);
+        localStorage.save(CARS_STORAGE_KEY, initialCars.data.cars);
       } catch (error) {
         console.log(error);
       }
     })();
   }, [allCars.length]);
 
-  const onFilter = e => {
-    setQuery(e.target.value.trim());
+  const onSearch = query => {
+    setQuery(query.trim().toLowerCase());
   };
 
   const filteredCars = useMemo(() => {
     return allCars.filter(car => {
       const carValues = Object.values(car);
+      const normalizedValues = carValues.map(value => {
+        if (typeof value === 'string') {
+          return value.toLowerCase();
+        }
+        return value;
+      });
+
       const isCarValue =
-        carValues.includes(query) || carValues.includes(Number(query));
+        normalizedValues.includes(query) ||
+        normalizedValues.includes(Number(query));
+
       return isCarValue;
     });
   }, [allCars, query]);
+
+  const carsToShow = filteredCars.length > 0 ? filteredCars : allCars;
 
   return (
     <div>
       <Section title="Cars table list">
         <Container>
-          <input type="text" name="filter" onChange={onFilter} value={query} />
-          <CarsTable cars={filteredCars} />
+          <Filter onSearch={onSearch} />
+          <CarsTable cars={carsToShow} />
         </Container>
       </Section>
     </div>
