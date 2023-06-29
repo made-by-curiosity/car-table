@@ -7,11 +7,14 @@ import { FilterWrapper } from './FilterWrapper/FilterWrapper';
 
 import { getCars } from 'services/carsApi';
 import storage from '../services/localStorageApi';
+import { Pagination } from './Pagination/Pagination';
 
 const CARS_STORAGE_KEY = 'all-cars';
+const PER_PAGE = 20;
 
 export const App = () => {
   const [allCars, setAllCars] = useState(storage.load(CARS_STORAGE_KEY) ?? []);
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -33,6 +36,7 @@ export const App = () => {
 
   const onSearch = query => {
     setQuery(query.trim().toLowerCase());
+    setPage(1);
   };
 
   const filteredCars = useMemo(() => {
@@ -53,7 +57,24 @@ export const App = () => {
     });
   }, [allCars, query]);
 
-  const carsToShow = filteredCars.length > 0 ? filteredCars : allCars;
+  const totalCarsToShow = filteredCars.length > 0 ? filteredCars : allCars;
+
+  const showCurrentCars = () => {
+    const startIndex = page * PER_PAGE - PER_PAGE;
+    const endIndex = page * PER_PAGE;
+    return [...totalCarsToShow].slice(startIndex, endIndex);
+  };
+
+  const currentCarsToShow = showCurrentCars();
+  console.log(currentCarsToShow);
+
+  const showNextPage = () => {
+    setPage(page => page + 1);
+  };
+
+  const showPrevPage = () => {
+    setPage(page => page - 1);
+  };
 
   return (
     <div>
@@ -62,9 +83,16 @@ export const App = () => {
           <FilterWrapper>
             <button type="button">Add new car</button>
             <Filter onSearch={onSearch} />
-            <div>Total: {carsToShow.length}</div>
+            <div>Total: {totalCarsToShow.length}</div>
+            <Pagination
+              showNextPage={showNextPage}
+              showPrevPage={showPrevPage}
+              page={page}
+              perPage={PER_PAGE}
+              totalCars={totalCarsToShow.length}
+            />
           </FilterWrapper>
-          <CarsTable cars={carsToShow} />
+          <CarsTable cars={currentCarsToShow} />
         </Container>
       </Section>
     </div>
