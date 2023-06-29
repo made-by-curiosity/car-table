@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SearchBtn, SearchInput } from './Filter.styled';
 
 export const Filter = ({ onSearch }) => {
   const [inputValue, setInputValue] = useState('');
@@ -17,8 +18,13 @@ export const Filter = ({ onSearch }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type="text" name="search" onChange={onChange} value={inputValue} />
-      <button type="submit">Search</button>
+      <SearchInput
+        type="text"
+        name="search"
+        onChange={onChange}
+        value={inputValue}
+      />
+      <SearchBtn type="submit">Search</SearchBtn>
     </form>
   );
 };

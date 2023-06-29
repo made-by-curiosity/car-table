@@ -3,6 +3,7 @@ import { Container } from './Container/Container';
 import { CarsTable } from './CarsTable/CarsTable';
 import { Section } from './Section/Section';
 import { Filter } from './Filter/Filter';
+import { FilterWrapper } from './FilterWrapper/FilterWrapper';
 
 import { getCars } from 'services/carsApi';
 import storage from '../services/localStorageApi';
@@ -58,7 +59,11 @@ export const App = () => {
     <div>
       <Section title="Cars table list">
         <Container>
-          <Filter onSearch={onSearch} />
+          <FilterWrapper>
+            <button type="button">Add new car</button>
+            <Filter onSearch={onSearch} />
+            <div>Total: {carsToShow.length}</div>
+          </FilterWrapper>
           <CarsTable cars={carsToShow} />
         </Container>
       </Section>

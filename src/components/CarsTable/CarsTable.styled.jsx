@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Table = styled.table`
+  width: 100%;
+
   border-collapse: collapse;
+
+  text-align: center;
 `;
 
 export const TableHeader = styled.th`
