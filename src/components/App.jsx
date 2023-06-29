@@ -5,14 +5,12 @@ import { Section } from './Section/Section';
 import { Filter } from './Filter/Filter';
 
 import { getCars } from 'services/carsApi';
-import localStorage from '../services/localStorageApi';
+import storage from '../services/localStorageApi';
 
 const CARS_STORAGE_KEY = 'all-cars';
 
 export const App = () => {
-  const [allCars, setAllCars] = useState(
-    localStorage.load(CARS_STORAGE_KEY) ?? []
-  );
+  const [allCars, setAllCars] = useState(storage.load(CARS_STORAGE_KEY) ?? []);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -25,7 +23,7 @@ export const App = () => {
         const initialCars = await getCars();
 
         setAllCars(initialCars.data.cars);
-        localStorage.save(CARS_STORAGE_KEY, initialCars.data.cars);
+        storage.save(CARS_STORAGE_KEY, initialCars.data.cars);
       } catch (error) {
         console.log(error);
       }

@@ -16,7 +16,9 @@ const load = key => {
   }
 };
 
-export default {
+const storage = {
   save,
   load,
 };
+
+export default storage;
