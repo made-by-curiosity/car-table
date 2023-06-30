@@ -1,8 +1,7 @@
+import PropTypes from 'prop-types';
 import { Table, TableData, TableHeader } from './CarsTable.styled';
 
 export const CarsTable = ({ cars }) => {
-  console.log(cars);
-
   return (
     <Table>
       <thead>
@@ -46,4 +45,19 @@ export const CarsTable = ({ cars }) => {
       </tbody>
     </Table>
   );
+};
+
+CarsTable.propTypes = {
+  cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      car: PropTypes.string.isRequired,
+      car_model: PropTypes.string.isRequired,
+      car_color: PropTypes.string.isRequired,
+      car_model_year: PropTypes.number.isRequired,
+      car_vin: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      availability: PropTypes.bool.isRequired,
+    })
+  ),
 };

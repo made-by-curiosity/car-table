@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { SearchBtn, SearchInput } from './Filter.styled';
 
@@ -27,4 +28,8 @@ export const Filter = ({ onSearch }) => {
       <SearchBtn type="submit">Search</SearchBtn>
     </form>
   );
+};
+
+Filter.propTypes = {
+  onSearch: PropTypes.func.isRequired,
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { PaginationBtn, PaginationContainer } from './Pagination.styled';
 
 export const Pagination = ({
@@ -26,4 +27,12 @@ export const Pagination = ({
       </PaginationBtn>
     </PaginationContainer>
   );
+};
+
+Pagination.propTypes = {
+  showPrevPage: PropTypes.func.isRequired,
+  showNextPage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  perPage: PropTypes.number.isRequired,
+  totalCars: PropTypes.number.isRequired,
 };
