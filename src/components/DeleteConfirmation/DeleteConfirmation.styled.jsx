@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
-export const DeleteConfirm = styled.div``;
+export const DeleteConfirm = styled.div`
+  text-align: center;
+`;
 
 export const DeleteBtnContainer = styled.div`
   display: flex;
@@ -8,7 +10,7 @@ export const DeleteBtnContainer = styled.div`
 `;
 
 export const DeleteMessage = styled.p`
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 `;
 
 export const DeleteCancel = styled.button`
@@ -17,6 +19,8 @@ export const DeleteCancel = styled.button`
 
   border: 1px solid DimGray;
   border-radius: 12px;
+
+  outline: none;
 
   transition: box-shadow 200ms ease-out;
 

@@ -15,7 +15,8 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalWindow = styled.div`
-  padding: 32px;
+  width: 500px;
+  padding: 32px 50px;
 
   position: relative;
 
@@ -33,12 +34,14 @@ export const CloseBtn = styled.button`
   height: 20px;
 
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 12px;
+  right: 12px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  outline: none;
 
   & svg {
     width: 20px;
@@ -46,16 +49,18 @@ export const CloseBtn = styled.button`
 
     fill: Silver;
     transition: fill 300ms ease-out;
+  }
 
-    &:hover,
-    &:focus {
-      fill: orangered;
-    }
+  &:hover svg,
+  &:focus svg {
+    fill: orangered;
   }
 `;
 
 export const Title = styled.p`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   font-weight: 600;
+
+  text-align: center;
 `;

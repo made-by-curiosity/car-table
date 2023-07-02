@@ -4,12 +4,13 @@ export const AddBtn = styled.button`
   width: 100px;
   padding: 10px;
 
-  /* border: 1px solid DimGray; */
   border-radius: 12px;
 
   background-color: rgb(34, 139, 34);
 
   color: white;
+
+  outline: none;
 
   transition: box-shadow 200ms ease-out;
 

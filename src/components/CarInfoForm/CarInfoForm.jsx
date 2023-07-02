@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import { CarForm, CarInput } from './CarInfoForm.styled';
+import { CarForm, CarInput, SubmitBtn } from './CarInfoForm.styled';
 
 export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
   const {
@@ -103,9 +103,9 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
         <option value={true}>Available</option>
         <option value={false}>Not Available</option>
       </select>
-      <button type="submit" {...register('submit')}>
+      <SubmitBtn type="submit" {...register('submit')}>
         Submit
-      </button>
+      </SubmitBtn>
     </CarForm>
   );
 };

@@ -17,6 +17,8 @@ export const PaginationBtn = styled.button`
   border: 1px solid DimGray;
   border-radius: 5px;
 
+  outline: none;
+
   transition: box-shadow 200ms ease-out;
 
   &:hover,

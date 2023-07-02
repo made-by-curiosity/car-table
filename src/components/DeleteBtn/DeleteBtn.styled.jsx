@@ -13,6 +13,8 @@ export const Delete = styled.button`
 
   border-radius: 12px;
 
+  outline: none;
+
   box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.75);
