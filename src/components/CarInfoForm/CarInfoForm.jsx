@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { CarForm, CarInput } from './CarInfoForm.styled';
 
-export const CarInfoForm = ({ editCar, carItem = {} }) => {
+export const CarInfoForm = ({ editCar, onModalClose, carItem = {} }) => {
   const {
     id = '',
     car = '',
@@ -30,48 +30,63 @@ export const CarInfoForm = ({ editCar, carItem = {} }) => {
     },
   });
 
+  console.log(errors);
+
   const isNewCar = !Object.keys(carItem).length;
 
   console.log('isNewCar', isNewCar);
 
   const onSubmit = updatedCar => {
-    console.log(updatedCar);
-
-    editCar(cars => {
-      return cars.map(car => {
-        if (car.id === id) {
-          return updatedCar;
-        }
-        return car;
+    if (!isNewCar) {
+      editCar(cars => {
+        return cars.map(car => {
+          if (car.id === id) {
+            return {
+              ...car,
+              availability:
+                updatedCar.availability === 'true' ||
+                updatedCar.availability === true,
+              car_color: updatedCar.car_color,
+              price: updatedCar.price,
+            };
+          }
+          return car;
+        });
       });
-    });
+      onModalClose();
+      return;
+    }
   };
 
   return (
     <CarForm onSubmit={handleSubmit(onSubmit)}>
       <CarInput
         type="text"
-        {...register('car')}
+        {...register('car', {
+          disabled: !isNewCar,
+        })}
         placeholder="Company"
-        disabled={!isNewCar}
       />
       <CarInput
         type="text"
-        {...register('car_model')}
+        {...register('car_model', {
+          disabled: !isNewCar,
+        })}
         placeholder="Model"
-        disabled={!isNewCar}
       />
       <CarInput
         type="text"
-        {...register('car_vin')}
+        {...register('car_vin', {
+          disabled: !isNewCar,
+        })}
         placeholder="VIN"
-        disabled={!isNewCar}
       />
       <CarInput
         type="text"
-        {...register('car_model_year')}
+        {...register('car_model_year', {
+          disabled: !isNewCar,
+        })}
         placeholder="Year"
-        disabled={!isNewCar}
       />
       <CarInput type="text" {...register('car_color')} placeholder="Color" />
       <CarInput type="text" {...register('price')} placeholder="Price" />

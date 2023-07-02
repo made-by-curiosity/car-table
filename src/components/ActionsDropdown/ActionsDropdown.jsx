@@ -39,16 +39,7 @@ export const ActionsDropdown = ({ carItem, setAllCars }) => {
     setIsDropdownOpen(isOpen => !isOpen);
   };
 
-  const {
-    id,
-    car,
-    car_model,
-    car_color,
-    car_model_year,
-    car_vin,
-    price,
-    availability,
-  } = carItem;
+  const { id, car, car_model, car_color, car_model_year, car_vin } = carItem;
 
   return (
     <Dropdown>
@@ -87,7 +78,11 @@ export const ActionsDropdown = ({ carItem, setAllCars }) => {
           onModalClose={setIsEditModalOpen}
           title={`Editing "${car} ${car_model} ${car_color} ${car_model_year} ${car_vin}"`}
         >
-          <CarInfoForm carItem={carItem} editCar={setAllCars} />
+          <CarInfoForm
+            carItem={carItem}
+            editCar={setAllCars}
+            onModalClose={() => setIsEditModalOpen(false)}
+          />
         </Modal>
       )}
     </Dropdown>
