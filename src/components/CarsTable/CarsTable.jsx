@@ -52,6 +52,7 @@ export const CarsTable = ({ cars, setAllCars }) => {
 };
 
 CarsTable.propTypes = {
+  setAllCars: PropTypes.func.isRequired,
   cars: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

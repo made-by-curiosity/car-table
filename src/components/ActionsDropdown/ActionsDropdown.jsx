@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Actions, ActionsBtn, Dropdown } from './ActionsDropdown.styled';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
 import { Modal } from 'components/Modal/Modal';
 import { CarInfoForm } from 'components/CarInfoForm/CarInfoForm';
+import { DeleteConfirmation } from 'components/DeleteConfirmation/DeleteConfirmation';
 
 export const ActionsDropdown = ({ carItem, setAllCars }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -39,8 +40,6 @@ export const ActionsDropdown = ({ carItem, setAllCars }) => {
     setIsDropdownOpen(isOpen => !isOpen);
   };
 
-  const { id, car, car_model, car_color, car_model_year, car_vin } = carItem;
-
   return (
     <Dropdown>
       <ActionsBtn type="button" onClick={onDropdownClick}>
@@ -59,25 +58,17 @@ export const ActionsDropdown = ({ carItem, setAllCars }) => {
       )}
 
       {isDeleteModalOpen && (
-        <Modal onModalClose={setIsDeleteModalOpen}>
-          {`Are you sure you want to delete ${car} ${car_model} ${car_color} ${car_model_year} ${car_vin}?`}
-          <br />
-          <DeleteBtn
-            carId={id}
+        <Modal onModalClose={setIsDeleteModalOpen} title="Delete car">
+          <DeleteConfirmation
             modalClose={() => setIsDeleteModalOpen(false)}
-            deleteCar={setAllCars}
+            setAllCars={setAllCars}
+            carItem={carItem}
           />
-          <button type="button" onClick={() => setIsDeleteModalOpen(false)}>
-            Cancel
-          </button>
         </Modal>
       )}
 
       {isEditModalOpen && (
-        <Modal
-          onModalClose={setIsEditModalOpen}
-          title={`Editing "${car} ${car_model} ${car_color} ${car_model_year} ${car_vin}"`}
-        >
+        <Modal onModalClose={setIsEditModalOpen} title="Editing">
           <CarInfoForm
             carItem={carItem}
             setAllCars={setAllCars}
@@ -87,4 +78,18 @@ export const ActionsDropdown = ({ carItem, setAllCars }) => {
       )}
     </Dropdown>
   );
+};
+
+ActionsDropdown.propTypes = {
+  carItem: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    car: PropTypes.string.isRequired,
+    car_model: PropTypes.string.isRequired,
+    car_color: PropTypes.string.isRequired,
+    car_model_year: PropTypes.number.isRequired,
+    car_vin: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    availability: PropTypes.bool.isRequired,
+  }),
+  setAllCars: PropTypes.func.isRequired,
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { CarForm, CarInput } from './CarInfoForm.styled';
 
@@ -107,4 +108,19 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
       </button>
     </CarForm>
   );
+};
+
+CarInfoForm.propTypes = {
+  setAllCars: PropTypes.func.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  carItem: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    car: PropTypes.string.isRequired,
+    car_model: PropTypes.string.isRequired,
+    car_color: PropTypes.string.isRequired,
+    car_model_year: PropTypes.number.isRequired,
+    car_vin: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    availability: PropTypes.bool.isRequired,
+  }),
 };

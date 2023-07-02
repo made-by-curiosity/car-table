@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Backdrop, CloseBtn, ModalWindow, Title } from './Modal.styled';
@@ -38,4 +39,10 @@ export const Modal = ({ children, onModalClose, title }) => {
     </Backdrop>,
     modalRoot
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  title: PropTypes.string,
 };

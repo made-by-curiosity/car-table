@@ -10,6 +10,7 @@ import { getCars } from 'services/carsApi';
 import storage from '../services/localStorageApi';
 import { Modal } from './Modal/Modal';
 import { CarInfoForm } from './CarInfoForm/CarInfoForm';
+import { AddCarBtn } from './AddCarBtn/AddCarBtn';
 
 const CARS_STORAGE_KEY = 'all-cars';
 const PER_PAGE = 20;
@@ -100,9 +101,7 @@ export const App = () => {
         <Section title="Cars table list">
           <Container>
             <FilterWrapper>
-              <button type="button" onClick={() => setIsAddModalOpen(true)}>
-                Add new car
-              </button>
+              <AddCarBtn onCarAdd={() => setIsAddModalOpen(true)} />
               <Filter onSearch={onSearch} />
               <div>Total: {filteredCars.length}</div>
               <Pagination
@@ -125,7 +124,7 @@ export const App = () => {
         </Section>
       </div>
       {isAddModalOpen && (
-        <Modal onModalClose={setIsAddModalOpen}>
+        <Modal onModalClose={setIsAddModalOpen} title="Add new car">
           <CarInfoForm
             onModalClose={() => setIsAddModalOpen(false)}
             setAllCars={setAllCars}
