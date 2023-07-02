@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { CarForm, CarInput } from './CarInfoForm.styled';
 
-export const CarInfoForm = ({ editCar, onModalClose, carItem = {} }) => {
+export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
   const {
     id = '',
     car = '',
@@ -34,20 +34,18 @@ export const CarInfoForm = ({ editCar, onModalClose, carItem = {} }) => {
 
   const isNewCar = !Object.keys(carItem).length;
 
-  console.log('isNewCar', isNewCar);
-
-  const onSubmit = updatedCar => {
+  const onSubmit = carToSave => {
     if (!isNewCar) {
-      editCar(cars => {
+      setAllCars(cars => {
         return cars.map(car => {
           if (car.id === id) {
             return {
               ...car,
               availability:
-                updatedCar.availability === 'true' ||
-                updatedCar.availability === true,
-              car_color: updatedCar.car_color,
-              price: updatedCar.price,
+                carToSave.availability === 'true' ||
+                carToSave.availability === true,
+              car_color: carToSave.car_color,
+              price: carToSave.price,
             };
           }
           return car;
@@ -56,6 +54,16 @@ export const CarInfoForm = ({ editCar, onModalClose, carItem = {} }) => {
       onModalClose();
       return;
     }
+
+    const newCar = {
+      ...carToSave,
+      id: Date.now(),
+      car_model_year: Number(carToSave.car_model_year),
+      availability: carToSave.availability === 'true',
+    };
+
+    setAllCars(cars => [newCar, ...cars]);
+    onModalClose();
   };
 
   return (

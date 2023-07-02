@@ -8,6 +8,8 @@ import { Pagination } from './Pagination/Pagination';
 
 import { getCars } from 'services/carsApi';
 import storage from '../services/localStorageApi';
+import { Modal } from './Modal/Modal';
+import { CarInfoForm } from './CarInfoForm/CarInfoForm';
 
 const CARS_STORAGE_KEY = 'all-cars';
 const PER_PAGE = 20;
@@ -18,6 +20,7 @@ export const App = () => {
   );
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   useEffect(() => {
     if (allCars.length !== 0) {
@@ -92,13 +95,25 @@ export const App = () => {
   const currentCarsToShow = showCurrentCars();
 
   return (
-    <div>
-      <Section title="Cars table list">
-        <Container>
-          <FilterWrapper>
-            <button type="button">Add new car</button>
-            <Filter onSearch={onSearch} />
-            <div>Total: {filteredCars.length}</div>
+    <>
+      <div>
+        <Section title="Cars table list">
+          <Container>
+            <FilterWrapper>
+              <button type="button" onClick={() => setIsAddModalOpen(true)}>
+                Add new car
+              </button>
+              <Filter onSearch={onSearch} />
+              <div>Total: {filteredCars.length}</div>
+              <Pagination
+                showNextPage={showNextPage}
+                showPrevPage={showPrevPage}
+                page={page}
+                perPage={PER_PAGE}
+                totalCars={filteredCars.length}
+              />
+            </FilterWrapper>
+            <CarsTable cars={currentCarsToShow} setAllCars={setAllCars} />
             <Pagination
               showNextPage={showNextPage}
               showPrevPage={showPrevPage}
@@ -106,17 +121,17 @@ export const App = () => {
               perPage={PER_PAGE}
               totalCars={filteredCars.length}
             />
-          </FilterWrapper>
-          <CarsTable cars={currentCarsToShow} setAllCars={setAllCars} />
-          <Pagination
-            showNextPage={showNextPage}
-            showPrevPage={showPrevPage}
-            page={page}
-            perPage={PER_PAGE}
-            totalCars={filteredCars.length}
+          </Container>
+        </Section>
+      </div>
+      {isAddModalOpen && (
+        <Modal onModalClose={setIsAddModalOpen}>
+          <CarInfoForm
+            onModalClose={() => setIsAddModalOpen(false)}
+            setAllCars={setAllCars}
           />
-        </Container>
-      </Section>
-    </div>
+        </Modal>
+      )}
+    </>
   );
 };

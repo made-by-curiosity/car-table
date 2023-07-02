@@ -80,7 +80,7 @@ export const ActionsDropdown = ({ carItem, setAllCars }) => {
         >
           <CarInfoForm
             carItem={carItem}
-            editCar={setAllCars}
+            setAllCars={setAllCars}
             onModalClose={() => setIsEditModalOpen(false)}
           />
         </Modal>
