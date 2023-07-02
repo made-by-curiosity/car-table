@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import { Table, TableData, TableHeader } from './CarsTable.styled';
+import { Table, TableData, TableHeader, TableRow } from './CarsTable.styled';
+import { ActionsDropdown } from 'components/ActionsDropdown/ActionsDropdown';
 
-export const CarsTable = ({ cars }) => {
+export const CarsTable = ({ cars, setAllCars }) => {
   return (
     <Table>
       <thead>
-        <tr>
+        <TableRow>
           <TableHeader>Company</TableHeader>
           <TableHeader>Model</TableHeader>
           <TableHeader>VIN</TableHeader>
@@ -14,11 +15,11 @@ export const CarsTable = ({ cars }) => {
           <TableHeader>Price</TableHeader>
           <TableHeader>Availability</TableHeader>
           <TableHeader>Actions</TableHeader>
-        </tr>
+        </TableRow>
       </thead>
       <tbody>
-        {cars.map(
-          ({
+        {cars.map(carItem => {
+          const {
             id,
             car,
             car_model,
@@ -27,8 +28,9 @@ export const CarsTable = ({ cars }) => {
             car_vin,
             price,
             availability,
-          }) => (
-            <tr key={id}>
+          } = carItem;
+          return (
+            <TableRow key={id}>
               <TableData>{car}</TableData>
               <TableData>{car_model}</TableData>
               <TableData>{car_vin}</TableData>
@@ -38,10 +40,12 @@ export const CarsTable = ({ cars }) => {
               <TableData>
                 {availability ? 'Available' : 'Not Available'}
               </TableData>
-              <TableData>Edit/Delete</TableData>
-            </tr>
-          )
-        )}
+              <TableData>
+                <ActionsDropdown carItem={carItem} setAllCars={setAllCars} />
+              </TableData>
+            </TableRow>
+          );
+        })}
       </tbody>
     </Table>
   );

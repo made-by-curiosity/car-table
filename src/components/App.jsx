@@ -34,7 +34,15 @@ export const App = () => {
         console.log(error);
       }
     })();
-  }, [allCars.length]);
+  }, [allCars]);
+
+  useEffect(() => {
+    if (allCars.length === 0) {
+      return;
+    }
+
+    storage.save(CARS_STORAGE_KEY, allCars);
+  }, [allCars]);
 
   const onSearch = query => {
     setQuery(query.trim().toLowerCase());
@@ -99,7 +107,7 @@ export const App = () => {
               totalCars={filteredCars.length}
             />
           </FilterWrapper>
-          <CarsTable cars={currentCarsToShow} />
+          <CarsTable cars={currentCarsToShow} setAllCars={setAllCars} />
           <Pagination
             showNextPage={showNextPage}
             showPrevPage={showPrevPage}

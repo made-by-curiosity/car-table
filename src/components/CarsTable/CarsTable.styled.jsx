@@ -10,6 +10,10 @@ export const Table = styled.table`
   text-align: center;
 `;
 
+export const TableRow = styled.tr`
+  height: 50px;
+`;
+
 export const TableHeader = styled.th`
   padding: 10px;
   border: 1px solid #2a2a2a;
