@@ -98,7 +98,12 @@ export const InputName = styled.label`
 
   gap: 5px;
 
-  & span {
+  & > span {
     font-weight: 600;
   }
+`;
+
+export const ErrorInputMessage = styled.span`
+  color: red;
+  font-weight: 400;
 `;

@@ -4,6 +4,7 @@ import {
   AvailabilitySelect,
   CarForm,
   CarInput,
+  ErrorInputMessage,
   InputName,
   SubmitBtn,
 } from './CarInfoForm.styled';
@@ -76,11 +77,14 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
   return (
     <CarForm onSubmit={handleSubmit(onSubmit)}>
       <InputName>
-        <span>Company:</span>
+        <span>
+          Company: <ErrorInputMessage>{errors.car?.message}</ErrorInputMessage>
+        </span>
         <CarInput
           type="text"
           {...register('car', {
             disabled: !isNewCar,
+            required: 'This field is required!',
           })}
           placeholder="Mitsubishi"
           autoComplete="off"
@@ -88,53 +92,75 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
         />
       </InputName>
       <InputName>
-        <span>Model: </span>
+        <span>
+          Model:{' '}
+          <ErrorInputMessage>{errors.car_model?.message}</ErrorInputMessage>
+        </span>
         <CarInput
           type="text"
           {...register('car_model', {
             disabled: !isNewCar,
+            required: 'This field is required!',
           })}
           placeholder="Lancer Evolution"
           autoComplete="off"
         />
       </InputName>
       <InputName>
-        <span>VIN: </span>
+        <span>
+          VIN: <ErrorInputMessage>{errors.car_vin?.message}</ErrorInputMessage>
+        </span>
         <CarInput
           type="text"
           {...register('car_vin', {
             disabled: !isNewCar,
+            required: 'This field is required!',
           })}
           placeholder="WAU2GBFCXDN339713"
           autoComplete="off"
         />
       </InputName>
       <InputName>
-        <span>Year: </span>
+        <span>
+          Year:{' '}
+          <ErrorInputMessage>
+            {errors.car_model_year?.message}
+          </ErrorInputMessage>
+        </span>
         <CarInput
           type="text"
           {...register('car_model_year', {
             disabled: !isNewCar,
+            required: 'This field is required!',
+            pattern: {
+              value: /^(19|20)\d{2}$/,
+              message: 'Choose year from 1900 until Now',
+            },
           })}
           placeholder="2002"
           autoComplete="off"
         />
       </InputName>
       <InputName>
-        <span>Color: </span>
+        <span>
+          Color:{' '}
+          <ErrorInputMessage>{errors.car_color?.message}</ErrorInputMessage>
+        </span>
         <CarInput
           type="text"
-          {...register('car_color')}
+          {...register('car_color', { required: 'This field is required!' })}
           placeholder="Goldenrod"
           autoComplete="off"
           autoFocus={!isNewCar}
         />
       </InputName>
       <InputName>
-        <span>Price: </span>
+        <span>
+          Price: <ErrorInputMessage>{errors.price?.message}</ErrorInputMessage>
+        </span>
         <CarInput
           type="text"
-          {...register('price')}
+          {...register('price', { required: 'This field is required!' })}
           placeholder="$3849.47"
           autoComplete="off"
         />
