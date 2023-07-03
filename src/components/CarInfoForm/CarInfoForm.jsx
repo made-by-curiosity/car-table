@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import { CarForm, CarInput, SubmitBtn } from './CarInfoForm.styled';
+import {
+  AvailabilitySelect,
+  CarForm,
+  CarInput,
+  InputName,
+  SubmitBtn,
+} from './CarInfoForm.styled';
 
 export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
   const {
@@ -69,40 +75,77 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
 
   return (
     <CarForm onSubmit={handleSubmit(onSubmit)}>
-      <CarInput
-        type="text"
-        {...register('car', {
-          disabled: !isNewCar,
-        })}
-        placeholder="Company"
-      />
-      <CarInput
-        type="text"
-        {...register('car_model', {
-          disabled: !isNewCar,
-        })}
-        placeholder="Model"
-      />
-      <CarInput
-        type="text"
-        {...register('car_vin', {
-          disabled: !isNewCar,
-        })}
-        placeholder="VIN"
-      />
-      <CarInput
-        type="text"
-        {...register('car_model_year', {
-          disabled: !isNewCar,
-        })}
-        placeholder="Year"
-      />
-      <CarInput type="text" {...register('car_color')} placeholder="Color" />
-      <CarInput type="text" {...register('price')} placeholder="Price" />
-      <select {...register('availability')} defaultValue={availability}>
+      <InputName>
+        <span>Company:</span>
+        <CarInput
+          type="text"
+          {...register('car', {
+            disabled: !isNewCar,
+          })}
+          placeholder="Mitsubishi"
+          autoComplete="off"
+          autoFocus={isNewCar}
+        />
+      </InputName>
+      <InputName>
+        <span>Model: </span>
+        <CarInput
+          type="text"
+          {...register('car_model', {
+            disabled: !isNewCar,
+          })}
+          placeholder="Lancer Evolution"
+          autoComplete="off"
+        />
+      </InputName>
+      <InputName>
+        <span>VIN: </span>
+        <CarInput
+          type="text"
+          {...register('car_vin', {
+            disabled: !isNewCar,
+          })}
+          placeholder="WAU2GBFCXDN339713"
+          autoComplete="off"
+        />
+      </InputName>
+      <InputName>
+        <span>Year: </span>
+        <CarInput
+          type="text"
+          {...register('car_model_year', {
+            disabled: !isNewCar,
+          })}
+          placeholder="2002"
+          autoComplete="off"
+        />
+      </InputName>
+      <InputName>
+        <span>Color: </span>
+        <CarInput
+          type="text"
+          {...register('car_color')}
+          placeholder="Goldenrod"
+          autoComplete="off"
+          autoFocus={!isNewCar}
+        />
+      </InputName>
+      <InputName>
+        <span>Price: </span>
+        <CarInput
+          type="text"
+          {...register('price')}
+          placeholder="$3849.47"
+          autoComplete="off"
+        />
+      </InputName>
+      <AvailabilitySelect
+        {...register('availability')}
+        defaultValue={availability}
+      >
         <option value={true}>Available</option>
         <option value={false}>Not Available</option>
-      </select>
+      </AvailabilitySelect>
       <SubmitBtn type="submit" {...register('submit')}>
         Submit
       </SubmitBtn>

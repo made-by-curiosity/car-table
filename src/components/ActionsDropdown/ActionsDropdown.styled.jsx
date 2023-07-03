@@ -18,7 +18,7 @@ export const Actions = styled.div`
 
   position: absolute;
   top: 20px;
-  left: 7px;
+  left: 3px;
   right: 0;
 
   display: flex;

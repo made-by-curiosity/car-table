@@ -1,5 +1,11 @@
 import PropTypes from 'prop-types';
-import { Table, TableData, TableHeader, TableRow } from './CarsTable.styled';
+import {
+  Table,
+  TableActionsCell,
+  TableData,
+  TableHeader,
+  TableRow,
+} from './CarsTable.styled';
 import { ActionsDropdown } from 'components/ActionsDropdown/ActionsDropdown';
 
 export const CarsTable = ({ cars, setAllCars }) => {
@@ -40,13 +46,13 @@ export const CarsTable = ({ cars, setAllCars }) => {
               <TableData>
                 {availability ? 'Available' : 'Not Available'}
               </TableData>
-              <TableData>
+              <TableActionsCell>
                 <ActionsDropdown
                   carItem={carItem}
                   setAllCars={setAllCars}
                   carIdx={idx}
                 />
-              </TableData>
+              </TableActionsCell>
             </TableRow>
           );
         })}

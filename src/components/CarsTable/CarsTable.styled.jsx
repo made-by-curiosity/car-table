@@ -23,3 +23,7 @@ export const TableData = styled.td`
   padding: 10px;
   border: 1px solid #2a2a2a;
 `;
+
+export const TableActionsCell = styled(TableData)`
+  width: 60px;
+`;

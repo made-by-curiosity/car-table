@@ -25,6 +25,8 @@ export const Filter = ({ onSearch }) => {
         name="search"
         onChange={onChange}
         value={inputValue}
+        autoFocus
+        autoComplete="off"
       />
       <SearchBtn type="submit">
         <BiSearchAlt />
