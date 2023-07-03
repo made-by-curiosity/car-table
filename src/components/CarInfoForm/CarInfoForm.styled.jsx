@@ -15,6 +15,8 @@ export const CarInput = styled.input`
 
   padding: 10px;
 
+  line-height: 1.3;
+
   border: 1px solid DimGray;
 
   border-radius: 5px;

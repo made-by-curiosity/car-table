@@ -8,20 +8,28 @@ export const Table = styled.table`
   border-collapse: collapse;
 
   text-align: center;
+
+  & tbody tr:nth-of-type(even) {
+    background-color: rgb(240, 248, 255);
+  }
 `;
 
 export const TableRow = styled.tr`
   height: 50px;
+
+  border-bottom: 1px solid #dddddd;
 `;
 
 export const TableHeader = styled.th`
   padding: 10px;
-  border: 1px solid #2a2a2a;
+
+  color: white;
+
+  background-color: rgb(176, 196, 222);
 `;
 
 export const TableData = styled.td`
   padding: 10px;
-  border: 1px solid #2a2a2a;
 `;
 
 export const TableActionsCell = styled(TableData)`

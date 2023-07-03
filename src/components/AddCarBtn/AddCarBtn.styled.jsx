@@ -6,8 +6,9 @@ export const AddBtn = styled.button`
 
   border-radius: 12px;
 
-  background-color: rgb(34, 139, 34);
+  background-color: rgb(0, 128, 128);
 
+  font-weight: 600;
   color: white;
 
   outline: none;
