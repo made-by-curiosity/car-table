@@ -38,8 +38,6 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
     },
   });
 
-  console.log(errors);
-
   const isNewCar = !Object.keys(carItem).length;
 
   const onSubmit = carToSave => {

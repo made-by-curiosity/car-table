@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Backdrop, CloseBtn, ModalWindow, Title } from './Modal.styled';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { Backdrop, CloseBtn, ModalWindow, Title } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 

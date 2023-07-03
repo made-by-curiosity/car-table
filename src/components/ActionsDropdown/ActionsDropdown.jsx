@@ -1,7 +1,10 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { MdDeleteForever, MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { BiSolidEdit } from 'react-icons/bi';
+import { Modal } from 'components/Modal/Modal';
+import { CarInfoForm } from 'components/CarInfoForm/CarInfoForm';
+import { DeleteConfirmation } from 'components/DeleteConfirmation/DeleteConfirmation';
 import {
   Actions,
   ActionsBtn,
@@ -9,9 +12,6 @@ import {
   Dropdown,
   EditBtn,
 } from './ActionsDropdown.styled';
-import { Modal } from 'components/Modal/Modal';
-import { CarInfoForm } from 'components/CarInfoForm/CarInfoForm';
-import { DeleteConfirmation } from 'components/DeleteConfirmation/DeleteConfirmation';
 
 export const ActionsDropdown = ({ carItem, setAllCars }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

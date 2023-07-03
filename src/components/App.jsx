@@ -3,14 +3,13 @@ import { Container } from './Container/Container';
 import { CarsTable } from './CarsTable/CarsTable';
 import { Section } from './Section/Section';
 import { Filter } from './Filter/Filter';
-import { FilterWrapper } from './FilterWrapper/FilterWrapper';
+import { TopActionsSection } from './TopActionsSection/TopActionsSection';
 import { Pagination } from './Pagination/Pagination';
-
-import { getCars } from 'services/carsApi';
-import storage from '../services/localStorageApi';
 import { Modal } from './Modal/Modal';
 import { CarInfoForm } from './CarInfoForm/CarInfoForm';
 import { AddCarBtn } from './AddCarBtn/AddCarBtn';
+import { getCars } from 'services/carsApi';
+import storage from '../services/localStorageApi';
 
 const CARS_STORAGE_KEY = 'all-cars';
 const PER_PAGE = 20;
@@ -25,6 +24,7 @@ export const App = () => {
 
   useEffect(() => {
     if (allCars.length !== 0) {
+      storage.save(CARS_STORAGE_KEY, allCars);
       return;
     }
 
@@ -38,14 +38,6 @@ export const App = () => {
         console.log(error);
       }
     })();
-  }, [allCars]);
-
-  useEffect(() => {
-    if (allCars.length === 0) {
-      return;
-    }
-
-    storage.save(CARS_STORAGE_KEY, allCars);
   }, [allCars]);
 
   const onSearch = query => {
@@ -100,7 +92,7 @@ export const App = () => {
       <div>
         <Section title="Cars">
           <Container>
-            <FilterWrapper>
+            <TopActionsSection>
               <AddCarBtn onCarAdd={() => setIsAddModalOpen(true)} />
               <Filter onSearch={onSearch} />
               <div>Total: {filteredCars.length}</div>
@@ -111,7 +103,7 @@ export const App = () => {
                 perPage={PER_PAGE}
                 totalCars={filteredCars.length}
               />
-            </FilterWrapper>
+            </TopActionsSection>
             <CarsTable cars={currentCarsToShow} setAllCars={setAllCars} />
             <Pagination
               showNextPage={showNextPage}

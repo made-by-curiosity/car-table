@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { ActionsDropdown } from 'components/ActionsDropdown/ActionsDropdown';
 import {
   Table,
   TableActionsCell,
@@ -6,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from './CarsTable.styled';
-import { ActionsDropdown } from 'components/ActionsDropdown/ActionsDropdown';
 
 export const CarsTable = ({ cars, setAllCars }) => {
   return (

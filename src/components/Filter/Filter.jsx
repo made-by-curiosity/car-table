@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { SearchBtn, SearchForm, SearchInput } from './Filter.styled';
 import { BiSearchAlt } from 'react-icons/bi';
+import { SearchBtn, SearchForm, SearchInput } from './Filter.styled';
 
 export const Filter = ({ onSearch }) => {
   const [inputValue, setInputValue] = useState('');
