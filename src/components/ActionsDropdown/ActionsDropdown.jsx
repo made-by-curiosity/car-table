@@ -1,7 +1,14 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { Actions, ActionsBtn, Dropdown } from './ActionsDropdown.styled';
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { MdDeleteForever, MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { BiSolidEdit } from 'react-icons/bi';
+import {
+  Actions,
+  ActionsBtn,
+  DeleteBtn,
+  Dropdown,
+  EditBtn,
+} from './ActionsDropdown.styled';
 import { Modal } from 'components/Modal/Modal';
 import { CarInfoForm } from 'components/CarInfoForm/CarInfoForm';
 import { DeleteConfirmation } from 'components/DeleteConfirmation/DeleteConfirmation';
@@ -42,18 +49,22 @@ export const ActionsDropdown = ({ carItem, setAllCars }) => {
 
   return (
     <Dropdown>
-      <ActionsBtn type="button" onClick={onDropdownClick}>
+      <ActionsBtn
+        type="button"
+        onClick={onDropdownClick}
+        isDropdownOpen={isDropdownOpen}
+      >
         <MdOutlineKeyboardArrowDown />
       </ActionsBtn>
 
       {isDropdownOpen && (
         <Actions>
-          <button type="button" onClick={() => setIsEditModalOpen(true)}>
-            Edit
-          </button>
-          <button type="button" onClick={() => setIsDeleteModalOpen(true)}>
-            Delete
-          </button>
+          <EditBtn type="button" onClick={() => setIsEditModalOpen(true)}>
+            <BiSolidEdit />
+          </EditBtn>
+          <DeleteBtn type="button" onClick={() => setIsDeleteModalOpen(true)}>
+            <MdDeleteForever />
+          </DeleteBtn>
         </Actions>
       )}
 

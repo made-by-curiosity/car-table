@@ -98,7 +98,7 @@ export const App = () => {
   return (
     <>
       <div>
-        <Section title="Cars table list">
+        <Section title="Cars">
           <Container>
             <FilterWrapper>
               <AddCarBtn onCarAdd={() => setIsAddModalOpen(true)} />

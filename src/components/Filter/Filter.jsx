@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { SearchBtn, SearchInput } from './Filter.styled';
+import { SearchBtn, SearchForm, SearchInput } from './Filter.styled';
+import { BiSearchAlt } from 'react-icons/bi';
 
 export const Filter = ({ onSearch }) => {
   const [inputValue, setInputValue] = useState('');
@@ -18,15 +19,17 @@ export const Filter = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <SearchForm onSubmit={onSubmit}>
       <SearchInput
         type="text"
         name="search"
         onChange={onChange}
         value={inputValue}
       />
-      <SearchBtn type="submit">Search</SearchBtn>
-    </form>
+      <SearchBtn type="submit">
+        <BiSearchAlt />
+      </SearchBtn>
+    </SearchForm>
   );
 };
 

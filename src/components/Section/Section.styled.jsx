@@ -7,5 +7,5 @@ export const MainSection = styled.div`
 
 export const PageTitle = styled.h1`
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 `;

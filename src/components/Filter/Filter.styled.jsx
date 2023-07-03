@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
 
+export const SearchForm = styled.form`
+  height: 35px;
+  display: flex;
+  align-items: center;
+`;
+
 export const SearchInput = styled.input`
   height: 100%;
   padding-top: 5px;
@@ -28,29 +34,37 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchBtn = styled.button`
+  width: 30px;
+  height: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-left: 5px;
 
-  border: 1px solid DimGray;
-  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
 
   outline: none;
 
-  transition: box-shadow 200ms ease-out;
+  transform: scale(1);
+
+  transition: transform 200ms ease-out;
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    transform: scale(1.2);
   }
 
   &:active {
-    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
+    transform: scale(1);
+  }
+
+  & svg {
+    width: 24px;
+    height: 24px;
   }
 `;
