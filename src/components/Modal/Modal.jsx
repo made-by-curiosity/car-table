@@ -7,12 +7,6 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 const modalRoot = document.querySelector('#modal-root');
 
 export const Modal = ({ children, onModalClose, title }) => {
-  const onBackdropModalClose = e => {
-    if (e.target === e.currentTarget) {
-      onModalClose(false);
-    }
-  };
-
   useEffect(() => {
     const onEscModalClose = e => {
       if (e.code === 'Escape') {
@@ -27,8 +21,14 @@ export const Modal = ({ children, onModalClose, title }) => {
     };
   }, [onModalClose]);
 
+  const onBackdropModalClose = e => {
+    if (e.target === e.currentTarget) {
+      onModalClose(false);
+    }
+  };
+
   return createPortal(
-    <Backdrop onClick={onBackdropModalClose}>
+    <Backdrop onMouseDown={onBackdropModalClose}>
       <ModalWindow>
         <CloseBtn type="button" onClick={() => onModalClose(false)}>
           <AiOutlineCloseCircle />
