@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const SearchForm = styled.form`
   height: 35px;
+
   display: flex;
   align-items: center;
 `;
