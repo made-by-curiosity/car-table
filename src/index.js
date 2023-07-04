@@ -7,9 +7,9 @@ import 'modern-normalize';
 
 const theme = {
   colors: {
-    primary: 'black',
-    secondary: 'white',
-    accent: 'orangered',
+    primary: 'rgb(0, 0, 0)',
+    secondary: 'rgb(255, 255, 255)',
+    accent: 'rgb(255, 69, 0)',
     addBtnBgColor: 'rgb(0, 128, 128)',
     deleteBtnBgColor: 'rgb(220, 0, 10)',
     deleteBtnHoverBgColor: 'rgb(190, 0, 20)',
@@ -19,8 +19,8 @@ const theme = {
     tableSecondaryColor: 'rgb(240, 248, 255)',
     tableHead: 'rgb(176, 196, 222)',
     backdrop: 'rgba(0, 0, 0, 0.1)',
-    closeModal: 'silver',
-    disabledPageBtn: 'silver',
+    closeModal: 'rgb(192, 192, 192)',
+    disabledPageBtn: 'rgb(192, 192, 192)',
   },
   shadows: {
     boxShadowMain: '0px 1px 5px -2px rgba(0, 0, 0, 0.75)',
@@ -29,8 +29,8 @@ const theme = {
     boxShadowBtnActive: '0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset',
   },
   borders: {
-    primary: '1px solid dimgray',
-    tableRow: '1px solid #dddddd',
+    primary: '1px solid rgb(105, 105, 105)',
+    tableRow: '1px solid rgb(220, 220, 220)',
     borderRadiusMain: '5px',
     borderRadiusAccent: '12px',
   },
