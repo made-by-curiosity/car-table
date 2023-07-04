@@ -41,34 +41,30 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
   const isNewCar = !Object.keys(carItem).length;
 
   const onSubmit = carToSave => {
-    if (!isNewCar) {
-      setAllCars(cars => {
-        return cars.map(car => {
-          if (car.id === id) {
-            return {
-              ...car,
-              availability:
-                carToSave.availability === 'true' ||
-                carToSave.availability === true,
-              car_color: carToSave.car_color,
-              price: carToSave.price,
-            };
-          }
-          return car;
-        });
+    setAllCars(cars => {
+      const newCar = {
+        ...carToSave,
+        id: Date.now(),
+        car_model_year: Number(carToSave.car_model_year),
+        availability: carToSave.availability === 'true',
+      };
+
+      const updatedCars = cars.map(car => {
+        if (car.id === id) {
+          return {
+            ...car,
+            availability:
+              carToSave.availability === 'true' || carToSave.availability,
+            car_color: carToSave.car_color,
+            price: carToSave.price,
+          };
+        }
+        return car;
       });
-      onModalClose();
-      return;
-    }
 
-    const newCar = {
-      ...carToSave,
-      id: Date.now(),
-      car_model_year: Number(carToSave.car_model_year),
-      availability: carToSave.availability === 'true',
-    };
+      return isNewCar ? [newCar, ...cars] : updatedCars;
+    });
 
-    setAllCars(cars => [newCar, ...cars]);
     onModalClose();
   };
 

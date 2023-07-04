@@ -24,7 +24,7 @@ export const CarsTable = ({ cars, setAllCars }) => {
         </TableRow>
       </thead>
       <tbody>
-        {cars.map((carItem, idx) => {
+        {cars.map(carItem => {
           const {
             id,
             car,
@@ -47,11 +47,7 @@ export const CarsTable = ({ cars, setAllCars }) => {
                 {availability ? 'Available' : 'Not Available'}
               </TableData>
               <TableActionsCell>
-                <ActionsDropdown
-                  carItem={carItem}
-                  setAllCars={setAllCars}
-                  carIdx={idx}
-                />
+                <ActionsDropdown carItem={carItem} setAllCars={setAllCars} />
               </TableActionsCell>
             </TableRow>
           );
