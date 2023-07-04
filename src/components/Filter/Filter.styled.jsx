@@ -15,11 +15,8 @@ export const SearchInput = styled.input`
 
   text-align: center;
 
-  border: 1px solid silver;
-  border-radius: 5px;
-
-  border: 1px solid DimGray;
-  border-radius: 5px;
+  border: ${props => props.theme.borders.primary};
+  border-radius: ${props => props.theme.borders.borderRadiusMain};
 
   outline: none;
 
@@ -27,9 +24,7 @@ export const SearchInput = styled.input`
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
   }
 `;
 
@@ -45,8 +40,6 @@ export const SearchBtn = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 50%;
 
   outline: none;
 

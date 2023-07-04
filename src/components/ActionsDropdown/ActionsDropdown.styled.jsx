@@ -27,13 +27,11 @@ export const Actions = styled.div`
   align-items: center;
   gap: 10px;
 
-  background-color: white;
+  background-color: ${props => props.theme.colors.secondary};
 
-  border-radius: 5px;
+  border-radius: ${props => props.theme.borders.borderRadiusMain};
 
-  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: ${props => props.theme.shadows.boxShadowPopup};
 
   z-index: 2;
 `;
@@ -49,7 +47,7 @@ export const ActionsBtn = styled.button`
     width: 20px;
     height: 20px;
 
-    fill: orangered;
+    fill: ${props => props.theme.colors.accent};
   }
 `;
 
@@ -61,7 +59,7 @@ export const ActionBtn = styled.button`
   justify-content: center;
   align-items: center;
 
-  border-radius: 5px;
+  border-radius: ${props => props.theme.borders.borderRadiusMain};
 
   outline: none;
 
@@ -69,20 +67,18 @@ export const ActionBtn = styled.button`
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
   }
 
   & svg {
-    fill: white;
+    fill: ${props => props.theme.colors.secondary};
   }
 `;
 
 export const DeleteBtn = styled(ActionBtn)`
-  background-color: rgb(220, 20, 60);
+  background-color: ${props => props.theme.colors.actionsDeleteBtnBgColor};
 `;
 
 export const EditBtn = styled(ActionBtn)`
-  background-color: rgb(255, 215, 0);
+  background-color: ${props => props.theme.colors.actionsEditBtnBgColor};
 `;

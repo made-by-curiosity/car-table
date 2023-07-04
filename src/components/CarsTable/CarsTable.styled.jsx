@@ -1,31 +1,31 @@
 import styled from '@emotion/styled';
 
 export const Table = styled.table`
-  margin-bottom: 10px;
-
   width: 100%;
+
+  margin-bottom: 10px;
 
   border-collapse: collapse;
 
   text-align: center;
 
   & tbody tr:nth-of-type(even) {
-    background-color: rgb(240, 248, 255);
+    background-color: ${props => props.theme.colors.tableSecondaryColor};
   }
 `;
 
 export const TableRow = styled.tr`
   height: 50px;
 
-  border-bottom: 1px solid #dddddd;
+  border-bottom: ${props => props.theme.borders.tableRow};
 `;
 
 export const TableHeader = styled.th`
   padding: 10px;
 
-  color: white;
+  color: ${props => props.theme.colors.secondary};
 
-  background-color: rgb(176, 196, 222);
+  background-color: ${props => props.theme.colors.tableHead};
 `;
 
 export const TableData = styled.td`

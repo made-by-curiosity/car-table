@@ -14,8 +14,8 @@ export const PaginationBtn = styled.button`
   padding-left: 7px;
   padding-right: 7px;
 
-  border: 1px solid DimGray;
-  border-radius: 5px;
+  border: ${props => props.theme.borders.primary};
+  border-radius: ${props => props.theme.borders.borderRadiusMain};
 
   outline: none;
 
@@ -23,9 +23,7 @@ export const PaginationBtn = styled.button`
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
 
     &:disabled {
       box-shadow: none;
@@ -33,13 +31,11 @@ export const PaginationBtn = styled.button`
   }
 
   &:active {
-    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: ${props => props.theme.shadows.boxShadowBtnActive};
   }
 
   &:disabled {
     cursor: default;
-    border-color: silver;
+    border-color: ${props => props.theme.colors.disabledPageBtn};
   }
 `;

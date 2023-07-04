@@ -11,7 +11,7 @@ export const Backdrop = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: ${props => props.theme.colors.backdrop};
 `;
 
 export const ModalWindow = styled.div`
@@ -20,13 +20,11 @@ export const ModalWindow = styled.div`
 
   position: relative;
 
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.secondary};
 
-  border-radius: 5px;
+  border-radius: ${props => props.theme.borders.borderRadiusMain};
 
-  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: ${props => props.theme.shadows.boxShadowPopup};
 `;
 
 export const CloseBtn = styled.button`
@@ -47,13 +45,13 @@ export const CloseBtn = styled.button`
     width: 20px;
     height: 20px;
 
-    fill: Silver;
+    fill: ${props => props.theme.colors.closeModal};
     transition: fill 300ms ease-out;
   }
 
   &:hover svg,
   &:focus svg {
-    fill: orangered;
+    fill: ${props => props.theme.colors.accent};
   }
 `;
 

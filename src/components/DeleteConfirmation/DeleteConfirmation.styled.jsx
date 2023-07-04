@@ -17,8 +17,8 @@ export const DeleteCancel = styled.button`
   width: 100px;
   padding: 10px;
 
-  border: 1px solid DimGray;
-  border-radius: 12px;
+  border: ${props => props.theme.borders.primary};
+  border-radius: ${props => props.theme.borders.borderRadiusAccent};
 
   outline: none;
 
@@ -26,14 +26,10 @@ export const DeleteCancel = styled.button`
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
   }
 
   &:active {
-    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: ${props => props.theme.shadows.boxShadowBtnActive};
   }
 `;

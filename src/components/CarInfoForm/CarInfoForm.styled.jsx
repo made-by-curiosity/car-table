@@ -17,9 +17,9 @@ export const CarInput = styled.input`
 
   line-height: 1.3;
 
-  border: 1px solid DimGray;
+  border: ${props => props.theme.borders.primary};
 
-  border-radius: 5px;
+  border-radius: ${props => props.theme.borders.borderRadiusMain};
 
   outline: none;
 
@@ -31,9 +31,7 @@ export const CarInput = styled.input`
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
 
     &:disabled {
       box-shadow: none;
@@ -48,9 +46,9 @@ export const AvailabilitySelect = styled.select`
   padding-bottom: 5px;
   padding-left: 5px;
 
-  border: 1px solid DimGray;
+  border: ${props => props.theme.borders.primary};
 
-  border-radius: 5px;
+  border-radius: ${props => props.theme.borders.borderRadiusMain};
 
   outline: none;
 
@@ -58,9 +56,7 @@ export const AvailabilitySelect = styled.select`
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
   }
 `;
 
@@ -70,25 +66,23 @@ export const SubmitBtn = styled.button`
 
   border-radius: 12px;
 
-  background-color: orangered;
+  background-color: ${props => props.theme.colors.accent};
 
   color: white;
 
   outline: none;
 
+  box-shadow: ${props => props.theme.shadows.boxShadowMain};
+
   transition: box-shadow 200ms ease-out;
 
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
   }
 
   &:active {
-    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: ${props => props.theme.shadows.boxShadowBtnActive};
   }
 `;
 
@@ -106,6 +100,6 @@ export const InputName = styled.label`
 `;
 
 export const ErrorInputMessage = styled.span`
-  color: red;
+  color: ${props => props.theme.colors.errorMsgColor};
   font-weight: 400;
 `;

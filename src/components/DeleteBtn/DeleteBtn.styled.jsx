@@ -7,31 +7,25 @@ export const Delete = styled.button`
   display: inline-flex;
   justify-content: center;
 
-  color: white;
+  color: ${props => props.theme.colors.secondary};
 
-  background-color: rgb(220, 0, 10);
+  background-color: ${props => props.theme.colors.deleteBtnBgColor};
 
-  border-radius: 12px;
+  border-radius: ${props => props.theme.borders.borderRadiusAccent};
 
   outline: none;
 
-  box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: ${props => props.theme.shadows.boxShadowMain};
 
   transition: background-color 300ms ease-out, box-shadow 200ms ease-out;
 
   &:hover,
   &:focus {
-    background-color: rgb(190, 0, 20);
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    background-color: ${props => props.theme.colors.deleteBtnHoverBgColor};
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
   }
 
   &:active {
-    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: ${props => props.theme.shadows.boxShadowBtnActive};
   }
 `;

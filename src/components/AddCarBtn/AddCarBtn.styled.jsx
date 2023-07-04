@@ -4,27 +4,25 @@ export const AddBtn = styled.button`
   width: 100px;
   padding: 10px;
 
-  border-radius: 12px;
+  border-radius: ${props => props.theme.borders.borderRadiusAccent};
 
-  background-color: rgb(0, 128, 128);
+  background-color: ${props => props.theme.colors.addBtnBgColor};
 
   font-weight: 600;
-  color: white;
+  color: ${props => props.theme.colors.secondary};
 
   outline: none;
 
   transition: box-shadow 200ms ease-out;
 
+  box-shadow: ${props => props.theme.shadows.boxShadowMain};
+
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: ${props => props.theme.shadows.boxShadowMainHover};
   }
 
   &:active {
-    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
-    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: ${props => props.theme.shadows.boxShadowBtnActive};
   }
 `;
