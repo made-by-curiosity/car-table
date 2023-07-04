@@ -54,7 +54,8 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
           return {
             ...car,
             availability:
-              carToSave.availability === 'true' || carToSave.availability,
+              carToSave.availability === 'true' ||
+              carToSave.availability === true,
             car_color: carToSave.car_color,
             price: carToSave.price,
           };
