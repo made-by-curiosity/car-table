@@ -8,19 +8,33 @@ import {
   TableRow,
 } from './CarsTable.styled';
 
+const tableColumnsNames = [
+  'Company',
+  'Model',
+  'VIN',
+  'Color',
+  'Year',
+  'Price',
+  'Availability',
+  'Actions',
+];
+
 export const CarsTable = ({ cars, setAllCars }) => {
   return (
     <Table>
       <thead>
         <TableRow>
-          <TableHeader>Company</TableHeader>
+          {tableColumnsNames.map(column => (
+            <TableHeader key={column}>{column}</TableHeader>
+          ))}
+          {/* <TableHeader>Company</TableHeader>
           <TableHeader>Model</TableHeader>
           <TableHeader>VIN</TableHeader>
           <TableHeader>Color</TableHeader>
           <TableHeader>Year</TableHeader>
           <TableHeader>Price</TableHeader>
           <TableHeader>Availability</TableHeader>
-          <TableHeader>Actions</TableHeader>
+          <TableHeader>Actions</TableHeader> */}
         </TableRow>
       </thead>
       <tbody>

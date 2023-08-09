@@ -29,7 +29,11 @@ export const TableHeader = styled.th`
 `;
 
 export const TableData = styled.td`
+  max-width: 200px;
+
   padding: 10px;
+
+  word-wrap: break-word;
 `;
 
 export const TableActionsCell = styled(TableData)`

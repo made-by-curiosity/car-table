@@ -5,6 +5,7 @@ import {
   CarForm,
   CarInput,
   ErrorInputMessage,
+  FieldName,
   InputName,
   SubmitBtn,
 } from './CarInfoForm.styled';
@@ -72,14 +73,18 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
   return (
     <CarForm onSubmit={handleSubmit(onSubmit)}>
       <InputName>
-        <span>
+        <FieldName>
           Company: <ErrorInputMessage>{errors.car?.message}</ErrorInputMessage>
-        </span>
+        </FieldName>
         <CarInput
           type="text"
           {...register('car', {
             disabled: !isNewCar,
             required: 'This field is required!',
+            maxLength: {
+              value: 26,
+              message: 'Should not be longer than 26 characters',
+            },
           })}
           placeholder="Mitsubishi"
           autoComplete="off"
@@ -87,41 +92,49 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
         />
       </InputName>
       <InputName>
-        <span>
+        <FieldName>
           Model:{' '}
           <ErrorInputMessage>{errors.car_model?.message}</ErrorInputMessage>
-        </span>
+        </FieldName>
         <CarInput
           type="text"
           {...register('car_model', {
             disabled: !isNewCar,
             required: 'This field is required!',
+            maxLength: {
+              value: 26,
+              message: 'Should not be longer than 26 characters',
+            },
           })}
           placeholder="Lancer Evolution"
           autoComplete="off"
         />
       </InputName>
       <InputName>
-        <span>
+        <FieldName>
           VIN: <ErrorInputMessage>{errors.car_vin?.message}</ErrorInputMessage>
-        </span>
+        </FieldName>
         <CarInput
           type="text"
           {...register('car_vin', {
             disabled: !isNewCar,
             required: 'This field is required!',
+            maxLength: {
+              value: 26,
+              message: 'Should not be longer than 26 characters',
+            },
           })}
           placeholder="WAU2GBFCXDN339713"
           autoComplete="off"
         />
       </InputName>
       <InputName>
-        <span>
+        <FieldName>
           Year:{' '}
           <ErrorInputMessage>
             {errors.car_model_year?.message}
           </ErrorInputMessage>
-        </span>
+        </FieldName>
         <CarInput
           type="text"
           {...register('car_model_year', {
@@ -137,25 +150,37 @@ export const CarInfoForm = ({ setAllCars, onModalClose, carItem = {} }) => {
         />
       </InputName>
       <InputName>
-        <span>
+        <FieldName>
           Color:{' '}
           <ErrorInputMessage>{errors.car_color?.message}</ErrorInputMessage>
-        </span>
+        </FieldName>
         <CarInput
           type="text"
-          {...register('car_color', { required: 'This field is required!' })}
+          {...register('car_color', {
+            required: 'This field is required!',
+            maxLength: {
+              value: 26,
+              message: 'Should not be longer than 26 characters',
+            },
+          })}
           placeholder="Goldenrod"
           autoComplete="off"
           autoFocus={!isNewCar}
         />
       </InputName>
       <InputName>
-        <span>
+        <FieldName>
           Price: <ErrorInputMessage>{errors.price?.message}</ErrorInputMessage>
-        </span>
+        </FieldName>
         <CarInput
           type="text"
-          {...register('price', { required: 'This field is required!' })}
+          {...register('price', {
+            required: 'This field is required!',
+            maxLength: {
+              value: 26,
+              message: 'Should not be longer than 26 characters',
+            },
+          })}
           placeholder="$3849.47"
           autoComplete="off"
         />

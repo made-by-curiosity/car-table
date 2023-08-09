@@ -103,3 +103,10 @@ export const ErrorInputMessage = styled.span`
   color: ${props => props.theme.colors.errorMsgColor};
   font-weight: 400;
 `;
+
+export const FieldName = styled.span`
+  :after {
+    content: '*';
+    color: ${props => props.theme.colors.errorMsgColor};
+  }
+`;

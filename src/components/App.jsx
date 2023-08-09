@@ -10,6 +10,7 @@ import { CarInfoForm } from './CarInfoForm/CarInfoForm';
 import { AddCarBtn } from './AddCarBtn/AddCarBtn';
 import { getCars } from 'services/carsApi';
 import storage from '../services/localStorageApi';
+import { RequestError } from './RequestError/RequestError';
 
 const CARS_STORAGE_KEY = 'all-cars';
 const PER_PAGE = 20;
@@ -21,6 +22,7 @@ export const App = () => {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (allCars.length !== 0) {
@@ -33,9 +35,9 @@ export const App = () => {
         const initialCars = await getCars();
 
         setAllCars(initialCars.data.cars);
-        storage.save(CARS_STORAGE_KEY, initialCars.data.cars);
+        // storage.save(CARS_STORAGE_KEY, initialCars.data.cars);
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
     })();
   }, [allCars]);
@@ -60,20 +62,28 @@ export const App = () => {
 
     return allCars.filter(car => {
       const carValues = Object.values(car);
-      const normalizedValues = carValues.map((value, index, array) => {
-        if (array[0] === value) {
+
+      const isCarValue = carValues.find((value, index, array) => {
+        if (array[0] === value || value === true || value === false) {
           return null;
         }
 
-        if (typeof value === 'string') {
-          return value.toLowerCase();
-        }
-        return value;
+        return value.toString().toLowerCase().includes(query);
       });
+      // const normalizedValues = carValues.map((value, index, array) => {
+      //   if (array[0] === value) {
+      //     return null;
+      //   }
 
-      const isCarValue =
-        normalizedValues.includes(query) ||
-        normalizedValues.includes(Number(query));
+      //   if (typeof value === 'string') {
+      //     return value.toLowerCase();
+      //   }
+      //   return value;
+      // });
+
+      // const isCarValue =
+      //   normalizedValues.includes(query) ||
+      //   normalizedValues.includes(Number(query));
 
       return isCarValue;
     });
@@ -92,26 +102,32 @@ export const App = () => {
       <div>
         <Section title="Cars">
           <Container>
-            <TopActionsSection>
-              <AddCarBtn onCarAdd={() => setIsAddModalOpen(true)} />
-              <Filter onSearch={onSearch} />
-              <div>Total: {filteredCars.length}</div>
-              <Pagination
-                showNextPage={showNextPage}
-                showPrevPage={showPrevPage}
-                page={page}
-                perPage={PER_PAGE}
-                totalCars={filteredCars.length}
-              />
-            </TopActionsSection>
-            <CarsTable cars={currentCarsToShow} setAllCars={setAllCars} />
-            <Pagination
-              showNextPage={showNextPage}
-              showPrevPage={showPrevPage}
-              page={page}
-              perPage={PER_PAGE}
-              totalCars={filteredCars.length}
-            />
+            {error ? (
+              <RequestError />
+            ) : (
+              <>
+                <TopActionsSection>
+                  <AddCarBtn onCarAdd={() => setIsAddModalOpen(true)} />
+                  <Filter onSearch={onSearch} />
+                  <div>Total: {filteredCars.length}</div>
+                  <Pagination
+                    showNextPage={showNextPage}
+                    showPrevPage={showPrevPage}
+                    page={page}
+                    perPage={PER_PAGE}
+                    totalCars={filteredCars.length}
+                  />
+                </TopActionsSection>
+                <CarsTable cars={currentCarsToShow} setAllCars={setAllCars} />
+                <Pagination
+                  showNextPage={showNextPage}
+                  showPrevPage={showPrevPage}
+                  page={page}
+                  perPage={PER_PAGE}
+                  totalCars={filteredCars.length}
+                />
+              </>
+            )}
           </Container>
         </Section>
       </div>
